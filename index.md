@@ -15,7 +15,5 @@
 <body>
 
 <canvas id="myCanvas" width="480" height="320"></canvas>
-<script type="text/javascript" src="game.js"></script>
-
 </body>
 </html>
