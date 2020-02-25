@@ -1,0 +1,65 @@
+/* Universalselektor */
+
+* {
+    font-family: Arial, Verdana, sans-serif;
+}
+
+body {
+    background-color: beige;
+    max-width: 90%;
+    /* Website soll nie kleiner als 90% der Gesamtseite sein */
+    margin: 0 auto;
+    /* Außenabstand 0 oben/unten und auto rechts/links (heißt Mitte)
+                                bringt unsere Seite in die Mitte*/
+}
+
+#logo {
+    width: 5rem;
+    display: block;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    border-style: double;
+    border-radius: 0.5rem;
+}
+
+.image {
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+#content {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-item {
+    flex-basis: 50%;
+    margin: 2rem;
+}
+
+.flex-three {
+    flex-basis: 30%;
+    margin: 1.5rem;
+}
+
+h2 {
+    text-align: center;
+    border-style: double;
+    border-radius: 0.5rem;
+}
+#witze {
+    margin: 2rem;
+    text-align: left;
+}
+
+#witz {
+    border: 1rem, black;
+}
+
+#download {
+    text-align: left;
+}
