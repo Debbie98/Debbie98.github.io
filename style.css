@@ -19,6 +19,23 @@ body {
     margin: 0 auto;
 }
 
+#navigation {
+    text-align: center;
+}
+
+#navigation a {
+    color: blue;
+    text-decoration: none;
+    margin: 0.2rem;
+}
+
+
+
+a:hover {
+    background-color: orange;
+    color: beige;
+}
+
 h1 {
     text-align: center;
     font-size: 2rem;
@@ -56,10 +73,25 @@ h2 {
     text-align: left;
 }
 
-#witz {
-    border: 1rem, black;
+.witz{
+    border-color: red;
+    border-style: dotted;
+    border-radius: 0.2rem;
 }
 
-#download {
-    text-align: left;
+
+@media (max-width: 40rem){
+
+    #content {
+        display: block;
+    }
+
+    body {
+        background-color: yellowgreen;
+    }
+
+    #navigation a {
+        color: rgb(8, 140, 248);
+    }
+
 }
