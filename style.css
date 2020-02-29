@@ -29,8 +29,6 @@ body {
     margin: 0.2rem;
 }
 
-
-
 a:hover {
     background-color: orange;
     color: beige;
@@ -51,11 +49,22 @@ h1 {
 #content {
     display: flex;
     flex-direction: row;
+    font-size: larger;
 }
 
-.flex-item {
+#content1 {
+    display: flex;
+    flex-direction: row;
+    font-size: larger;
+}
+
+#content2 {
     flex-basis: 50%;
-    margin: 2rem;
+    margin: 1.5rem;
+}
+
+.small {
+    display: none;
 }
 
 .flex-three {
@@ -68,30 +77,70 @@ h2 {
     border-style: double;
     border-radius: 0.5rem;
 }
+
 #witze {
-    margin: 2rem;
+    margin: 1rem;
     text-align: left;
 }
 
-.witz{
+.witz {
     border-color: red;
     border-style: dotted;
     border-radius: 0.2rem;
+    font-size: larger;
+}
+
+@media (max-width: 50rem) {
+    .small {
+        display: flex;
+        flex-direction: row;
+    }
+    .big {
+        display: none;
+    }
+    #content2 {
+        margin: 1rem;
+    }
+
+    .flex-three {
+        margin: 1rem;
+    }
 }
 
 
-@media (max-width: 40rem){
-
+@media (max-width: 40rem) {
+    .small {
+        margin-top: 0rem;
+        margin-bottom: 1.5rem;
+    }
+    
     #content {
         display: block;
+        font-size: medium;
+    }
+
+    #content1 {
+        display: block;
+        font-size: medium;
     }
 
     body {
         background-color: yellowgreen;
     }
-
     #navigation a {
         color: rgb(8, 140, 248);
     }
 
+    .witz {
+        font-size: medium;
+    }
+
+    .flex-item {
+        margin: 0rem;
+    }
+
+    .flex-three {
+        margin-bottom: 1.5rem;
+    }
 }
+

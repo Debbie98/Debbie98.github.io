@@ -21,14 +21,6 @@ body {
     text-align: center;
 }
 
-h1 {
-    text-align: center;
-    font-size: 2rem;
-    border-style: double;
-    border-radius: 0.5rem;
-}
-
-
 #navigation a {
     color: blue;
     text-decoration: none;
@@ -40,9 +32,17 @@ a:hover {
     color: beige;
 }
 
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    border-style: double;
+    border-radius: 0.5rem;
+}
+
 .accordion {
     text-align: left;
     margin-top: 5rem;
+    font-size: larger;
 }
 
 .accordion-element {
@@ -53,7 +53,18 @@ a:hover {
 .accordion-content {
     display: none;
     height: 0rem;
-    border-color:  rgb(49, 212, 62);
+    border-color: rgb(49, 212, 62);
+    border-style: solid;
+    border-radius: 0.2rem;
+    margin-top: 1.5rem;
+    padding: 0.5rem;
+    cursor: default;
+}
+
+.accordion-content-2 {
+    display: none;
+    height: 0rem;
+    border-color: rgb(49, 212, 62);
     border-style: solid;
     border-radius: 0.2rem;
     margin-top: 1.5rem;
@@ -65,7 +76,16 @@ a:hover {
     cursor: pointer;
 }
 
+.accordion-content-3 {
+    display: none;
+}
+
 .accordion-element.accordion-element-active .accordion-content {
+    display: block;
+    height: auto;
+}
+
+.accordion-element.accordion-element-active .accordion-content-2 {
     display: block;
     height: auto;
 }
@@ -74,19 +94,40 @@ a:hover {
     font-weight: bold;
 }
 
-@media (max-width: 40rem){
+@media (max-width: 50rem) {
+    .accordion-content-3 {
+        border-color: rgb(49, 212, 62);
+        border-style: solid;
+        border-radius: 0.2rem;
+        margin-top: 1.5rem;
+        padding: 0.5rem;
+    }
+    .accordion-element.accordion-element-active .accordion-content-3 {
+        display: block;
+        height: auto;
+    }
+    .accordion-content-2 {
+        display: none;
+        height: 0rem;
+    }
+    .accordion-element.accordion-element-active .accordion-content-2 {
+        display: none;
+        height: 0rem;
+    }
+}
 
+@media (max-width: 40rem) {
     body {
         background-color: yellowgreen;
+        font-size: medium;
     }
-
     #navigation a {
         color: rgb(9, 109, 190);
     }
-
     .accordion-content {
         border-color: rgb(9, 109, 190);
     }
-
-
+    .accordion-content-3 {
+        border-color: rgb(9, 109, 190);
+    }
 }
