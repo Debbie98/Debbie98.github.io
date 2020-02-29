@@ -1,5 +1,3 @@
-/* Universalselektor */
-
 * {
     font-family: Arial, Verdana, sans-serif;
 }
@@ -9,8 +7,7 @@ body {
     max-width: 90%;
     /* Website soll nie kleiner als 90% der Gesamtseite sein */
     margin: 0 auto;
-    /* Außenabstand 0 oben/unten und auto rechts/links (heißt Mitte)
-                                bringt unsere Seite in die Mitte*/
+    /* Außenabstand 0 oben/unten und auto rechts/links (heißt Mitte)*/
 }
 
 #logo {
@@ -46,21 +43,27 @@ h1 {
     margin-bottom: 0.5rem;
 }
 
-#content {
+#content-bottom {
     display: flex;
     flex-direction: row;
     font-size: larger;
 }
 
-#content1 {
+#content-outer {
     display: flex;
     flex-direction: row;
     font-size: larger;
 }
 
-#content2 {
+.content-inner {
     flex-basis: 50%;
-    margin: 1.5rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.big {
+    margin-bottom: 0rem;
 }
 
 .small {
@@ -76,6 +79,7 @@ h2 {
     text-align: center;
     border-style: double;
     border-radius: 0.5rem;
+    font-size: 2rem;
 }
 
 #witze {
@@ -91,52 +95,47 @@ h2 {
 }
 
 @media (max-width: 50rem) {
+    
+    .content-inner {
+        margin: 1rem;
+    }
+    
     .small {
         display: flex;
-        flex-direction: row;
+
     }
     .big {
         display: none;
     }
-    #content2 {
-        margin: 1rem;
-    }
-
+    
     .flex-three {
         margin: 1rem;
     }
 }
 
-
 @media (max-width: 40rem) {
-    .small {
-        margin-top: 0rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    #content {
-        display: block;
-        font-size: medium;
-    }
-
-    #content1 {
-        display: block;
-        font-size: medium;
-    }
-
     body {
         background-color: yellowgreen;
     }
     #navigation a {
         color: rgb(8, 140, 248);
     }
-
+    #content-outer {
+        display: block;
+        font-size: medium;
+    }
+    .small {
+        margin-top: 0rem;
+        margin-bottom: 1.5rem;
+    }
+    #content-bottom {
+        display: block;
+        font-size: medium;
+    }
     .witz {
         font-size: medium;
     }
-
     .flex-three {
         margin-bottom: 1.5rem;
     }
 }
-

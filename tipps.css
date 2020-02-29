@@ -7,8 +7,7 @@ body {
     max-width: 90%;
     /* Website soll nie kleiner als 90% der Gesamtseite sein */
     margin: 0 auto;
-    /* Außenabstand 0 oben/unten und auto rechts/links (heißt Mitte)
-                                bringt unsere Seite in die Mitte*/
+    /* Außenabstand 0 oben/unten und auto rechts/links (heißt Mitte)*/
 }
 
 #logo {
