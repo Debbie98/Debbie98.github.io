@@ -114,12 +114,6 @@ h2 {
 }
 
 @media (max-width: 40rem) {
-    body {
-        background-color: yellowgreen;
-    }
-    #navigation a {
-        color: rgb(8, 140, 248);
-    }
     #content-outer {
         display: block;
         font-size: medium;

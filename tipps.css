@@ -95,12 +95,16 @@ h1 {
 
 @media (max-width: 50rem) {
     .accordion-content-3 {
+        display: none;
+        height: 0rem;
         border-color: rgb(49, 212, 62);
         border-style: solid;
         border-radius: 0.2rem;
         margin-top: 1.5rem;
         padding: 0.5rem;
+        cursor: default;
     }
+    
     .accordion-element.accordion-element-active .accordion-content-3 {
         display: block;
         height: auto;
@@ -112,21 +116,5 @@ h1 {
     .accordion-element.accordion-element-active .accordion-content-2 {
         display: none;
         height: 0rem;
-    }
-}
-
-@media (max-width: 40rem) {
-    body {
-        background-color: yellowgreen;
-        font-size: medium;
-    }
-    #navigation a {
-        color: rgb(9, 109, 190);
-    }
-    .accordion-content {
-        border-color: rgb(9, 109, 190);
-    }
-    .accordion-content-3 {
-        border-color: rgb(9, 109, 190);
     }
 }
