@@ -75,6 +75,11 @@ h1 {
     cursor: pointer;
 }
 
+.accordion-heading:after {
+    content: '\25B6'; 
+  }
+
+
 .accordion-content-3 {
     display: none;
 }
@@ -91,6 +96,10 @@ h1 {
 
 .accordion-element.accordion-element-active .accordion-heading {
     font-weight: bold;
+    
+}
+.accordion-element.accordion-element-active .accordion-heading:after {
+    content: "\25BC"; 
 }
 
 @media (max-width: 50rem) {
