@@ -1,0 +1,45 @@
+* {
+    font-family: Arial, Verdana, sans-serif;
+}
+
+body {
+    background-color: beige;
+    max-width: 90%;
+    /* Website soll nie kleiner als 90% der Gesamtseite sein */
+    margin: 0 auto;
+    /* Außenabstand 0 oben/unten und auto rechts/links (heißt Mitte)*/
+}
+
+#logo {
+    width: 5rem;
+    display: block;
+    margin: 0 auto;
+}
+
+#navigation {
+    text-align: center;
+}
+
+#navigation a {
+    color: blue;
+    text-decoration: none;
+    margin: 0.2rem;
+}
+
+a:hover {
+    background-color: orange;
+    color: beige;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    border-style: double;
+    border-radius: 0.5rem;
+}
+
+#mapid {
+    margin-top: 2rem;
+    height: 25rem;
+}
+
