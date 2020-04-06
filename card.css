@@ -45,6 +45,8 @@ h1 {
 
 .my-div-icon {
     background: red;
-    border: 1rem solid red;
+    border-radius: 0.5rem;
+    border-style: solid;
+    border-color: darkblue;
 }
 
