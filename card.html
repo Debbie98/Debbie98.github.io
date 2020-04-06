@@ -54,19 +54,49 @@
 
         <script>
 
+            var latlng;
+            var map;
+            var markerPosition;
+            var osm;
+            var equestrian;
 
             window.onload = function () {
-                // set up the map
-                var map = new L.Map('map');
-                var osm = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    minZoom: 0,
-                    maxZoom: 20,
-                    attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+
+                //Get own position
+
+                navigator.geolocation.getCurrentPosition(function (location) {
+                    latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
+
+                    map = L.map('map').setView(latlng, 13)
+
+
+                    osm = new L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+                        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://mapbox.com">Mapbox</a>',
+                        maxZoom: 18,
+                        id: 'mapbox.streets',
+                        accessToken: 'pk.eyJ1IjoiYmJyb29rMTU0IiwiYSI6ImNpcXN3dnJrdDAwMGNmd250bjhvZXpnbWsifQ.Nf9Zkfchos577IanoKMoYQ'
+                    }).addTo(map);
+
+                    markerPosition = L.marker(latlng).addTo(map);
                 });
 
-                // define view
-                map.setView(new L.LatLng(49.451993, 11.073397), 5);
-                map.addLayer(osm);
+
+                // set up the map if not done
+
+                if (map == null) {
+                    var map = new L.map("map");
+                    var osm = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        minZoom: 0,
+                        maxZoom: 18,
+                        attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+                    });
+
+                    // define view
+                    map.setView(new L.LatLng(49.451993, 11.073397), 5);
+                    map.addLayer(osm);
+                }
+
+                
 
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', 'equestrian.geojson');
@@ -80,122 +110,56 @@
 
             }
 
-                /*var latlng = [49.188717, 7.041915];
-                var mymap = L.map('map').setView(latlng, 13);
-
-
-                L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-                    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://mapbox.com">Mapbox</a>',
-                    maxZoom: 18,
-                    id: 'mapbox.streets',
-                    accessToken: 'pk.eyJ1IjoiYmJyb29rMTU0IiwiYSI6ImNpcXN3dnJrdDAwMGNmd250bjhvZXpnbWsifQ.Nf9Zkfchos577IanoKMoYQ'
-                }).addTo(mymap);
-
-                var marker = L.marker(latlng).addTo(mymap);
-
-                let xhr = new XMLHttpRequest();
-                xhr.open('GET', 'equestrian.geojson', true);
-                xhr.setRequestHeader('Content-Type', 'application/json');
-                xhr.responseType = 'json';
-                xhr.onload = function () {
-                    if (xhr.status !== 200) {
-                        return
-                    }
-                    L.geoJSON(xhr.response).addTo(mymap);
-                };
-                xhr.send();*/
-
-                /*var map = L.map('mapid').fitWorld();
-    
-                L.Control.fileLayerLoad({
-                    // Allows you to use a customized version of L.geoJson.
-                    // For example if you are using the Proj4Leaflet leaflet plugin,
-                    // you can pass L.Proj.geoJson and load the files into the
-                    // L.Proj.GeoJson instead of the L.geoJson.
-                    layer: L.geoJson,
-                    // See http://leafletjs.com/reference.html#geojson-options
-                    layerOptions: { style: { color: 'red' } },
-                    // Add to map after loading (default: true) ?
-                    addToMap: true,
-                    // File size limit in kb (default: 1024) ?
-                    fileSizeLimit: 1024,
-                    // Restrict accepted file formats (default: .geojson, .json, .kml, and .gpx) ?
-                    formats: [
-                        '.geojson',
-                        '.kml'
-                    ]
-                }).addTo(map);
-    
-                var control = L.Control.fileLayerLoad();
-                control.loader.on('data:loaded', function (event) {
-                    // event.layer gives you access to the layers you just uploaded!
-    
-                    // Add to map layer switcher
-                    layerswitcher.addOverlay(event.layer, event.filename);
-                });*/
 
 
 
-                /*navigator.geolocation.getCurrentPosition(function (location) {
-                    var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
-    
-                    var mymap = L.map('mapid').setView(latlng, 13)
-    
-    
-                    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-                        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://mapbox.com">Mapbox</a>',
-                        maxZoom: 18,
-                        id: 'mapbox.streets',
-                        accessToken: 'pk.eyJ1IjoiYmJyb29rMTU0IiwiYSI6ImNpcXN3dnJrdDAwMGNmd250bjhvZXpnbWsifQ.Nf9Zkfchos577IanoKMoYQ'
-                    }).addTo(mymap);
-    
-                    var marker = L.marker(latlng).addTo(mymap);*/
+            /**/
 
 
 
 
-                /*var url = "equestrian.geojson";
+            /*var url = "equestrian.geojson";
 
-                var osm = new L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-                    attribution: '© <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                });
+            var osm = new L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                attribution: '© <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            });
 
-                var geojsonMarkerOptions = {
-                    'radius': 6,
-                    'opacity': .5,
-                    'color': "red",
-                    'fillColor': "blue",
-                    'fillOpacity': 0.8
-                };
+            var geojsonMarkerOptions = {
+                'radius': 6,
+                'opacity': .5,
+                'color': "red",
+                'fillColor': "blue",
+                'fillOpacity': 0.8
+            };
 
-                function forEachFeature(feature, layer) {
+            function forEachFeature(feature, layer) {
 
-                    var popupContent = "<p>The <b>" +
-                        feature.properties.user + "</b> tagged here,</br> They are in the " +
-                        feature.properties.name + "</br>" +
-                        '<a href="' + feature.properties.website + '" target="_blank">Website</a></p>';
+                var popupContent = "<p>The <b>" +
+                    feature.properties.user + "</b> tagged here,</br> They are in the " +
+                    feature.properties.name + "</br>" +
+                    '<a href="' + feature.properties.website + '" target="_blank">Website</a></p>';
 
-                    if (feature.properties && feature.properties.popupContent) {
-                        popupContent += feature.properties.popupContent;
-                    }
-                    layer.bindPopup(popupContent);
-                };
+                if (feature.properties && feature.properties.popupContent) {
+                    popupContent += feature.properties.popupContent;
+                }
+                layer.bindPopup(popupContent);
+            };
 
-                //var bbTeam = L.geoJSON(null, {onEachFeature: forEachFeature, style: style});
-                var bbTeam = L.geoJSON(null, {
-                    onEachFeature: forEachFeature,
-                    pointToLayer: function (feature, latlng) {
-                        return L.circleMarker(latlng, geojsonMarkerOptions);
-                    }
-                });
+            //var bbTeam = L.geoJSON(null, {onEachFeature: forEachFeature, style: style});
+            var bbTeam = L.geoJSON(null, {
+                onEachFeature: forEachFeature,
+                pointToLayer: function (feature, latlng) {
+                    return L.circleMarker(latlng, geojsonMarkerOptions);
+                }
+            });
 
 
-                // Get GeoJSON data and create features.
-                $.getJSON(url, function (data) {
-                    bbTeam.addData(data);
-                });
+            // Get GeoJSON data and create features.
+            $.getJSON(url, function (data) {
+                bbTeam.addData(data);
+            });
 
-                bbTeam.addTo(mymap);*/
+            bbTeam.addTo(mymap);*/
 
 
 
