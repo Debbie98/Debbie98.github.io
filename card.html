@@ -77,7 +77,7 @@
                     }).addTo(map);
 
 
-                    var myPositionIcon = L.divIcon({className: 'my-div-icon'});
+                    var myPositionIcon = L.divIcon({ className: 'my-div-icon' });
 
                     var markerPosition = L.marker(latlng, { icon: myPositionIcon }).addTo(map);
                 });
@@ -104,11 +104,23 @@
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.onload = function () {
                     if (xhr.status === 200) {
-                        L.geoJSON(JSON.parse(xhr.responseText)).addTo(map);
+                        L.geoJSON(JSON.parse(xhr.responseText), {onEachFeature: onEachFeature}).addTo(map);
                     }
                 };
                 xhr.send();
 
+
+                function onEachFeature(feature, layer) {
+                    // does this feature have a property named popupContent?
+                    if (feature.properties && feature.properties.name) {
+                        layer.bindPopup(feature.properties.name);
+                    }
+                    else {
+                        layer.bindPopup("Sorry, no name found");
+                    }
+                }
+
+                
             }
 
         </script>
