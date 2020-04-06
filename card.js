@@ -29,7 +29,9 @@ window.addEventListener("DOMContentLoaded", function () {
 
 });
 
-function saarland() {
+document.getElementById("saarland").addEventListener("click", onClickSaarland);
+
+function onClickSaarland() {
 
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'equestrian.geojson');
