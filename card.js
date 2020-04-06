@@ -47,6 +47,17 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 function saarland() {
+    var map = new L.map("map");
+    var osm = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        minZoom: 10,
+        maxZoom: 18,
+        attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+    });
+
+    // define view
+    map.setView(new L.LatLng(49.451993, 11.073397), 5);
+    map.addLayer(osm);
+
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'equestrian.geojson');
     xhr.setRequestHeader('Content-Type', 'application/json');
