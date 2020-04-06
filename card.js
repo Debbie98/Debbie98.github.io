@@ -1,0 +1,78 @@
+window.addEventListener("DOMContentLoaded", function () {
+
+    var latlng;
+    var map = L.map('map');
+    var osm;
+    var equestrian;
+
+    //Get own position
+
+    navigator.geolocation.getCurrentPosition(function (location) {
+        latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
+
+        map.setView(latlng, 10);
+
+
+        osm = new L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://mapbox.com">Mapbox</a>',
+            minZoom: 0,
+            maxZoom: 18,
+            id: 'mapbox.streets',
+            accessToken: 'pk.eyJ1IjoiYmJyb29rMTU0IiwiYSI6ImNpcXN3dnJrdDAwMGNmd250bjhvZXpnbWsifQ.Nf9Zkfchos577IanoKMoYQ'
+        }).addTo(map);
+
+
+        var myPositionIcon = L.divIcon({ className: 'my-div-icon' });
+
+        var markerPosition = L.marker(latlng, { icon: myPositionIcon }).addTo(map);
+    });
+
+
+    // set up the map if not done
+
+    /*if (map == null) {
+        var map = new L.map("map");
+        var osm = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            minZoom: 10,
+            maxZoom: 18,
+            attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+        });
+
+        // define view
+        map.setView(new L.LatLng(49.451993, 11.073397), 5);
+        map.addLayer(osm);
+    }*/
+
+
+
+    function saarland() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'equestrian.geojson');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                L.geoJSON(JSON.parse(xhr.responseText), { onEachFeature: onEachFeature }).addTo(map);
+            }
+        };
+        xhr.send();
+    }
+
+
+
+    function onEachFeature(feature, layer) {
+        // does this feature have a property named popupContent?
+        if (feature.properties.name != null) {
+            layer.bindPopup(feature.properties.name);
+        }
+        else {
+            layer.bindPopup("Sorry, no name found");
+        }
+    }
+
+
+
+
+});
+
+
+
