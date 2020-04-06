@@ -113,7 +113,7 @@
                 function onEachFeature(feature, layer) {
                     // does this feature have a property named popupContent?
                     if (feature.properties.name != null) {
-                        layer.bindPopup("Name: "+ feature.properties.name);
+                        layer.bindPopup(feature.properties.name);
                     }
                     else {
                         layer.bindPopup("Sorry, no name found");
