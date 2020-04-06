@@ -1,5 +1,6 @@
+var map;
 window.addEventListener("DOMContentLoaded", function () {
-    var map = L.map('map');
+    map = L.map('map');
     var latlng;
     var osm;
     var equestrian;
@@ -26,37 +27,9 @@ window.addEventListener("DOMContentLoaded", function () {
         var markerPosition = L.marker(latlng, { icon: myPositionIcon }).addTo(map);
     });
 
-
-    // set up the map if not done
-
-    /*if (map == null) {
-        var map = new L.map("map");
-        var osm = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            minZoom: 10,
-            maxZoom: 18,
-            attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-        });
-
-        // define view
-        map.setView(new L.LatLng(49.451993, 11.073397), 5);
-        map.addLayer(osm);
-    }*/
-
-
-
 });
 
 function saarland() {
-    var map = new L.map("map");
-    var osm = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        minZoom: 10,
-        maxZoom: 18,
-        attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-    });
-
-    // define view
-    map.setView(new L.LatLng(49.451993, 11.073397), 5);
-    map.addLayer(osm);
 
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'equestrian.geojson');
