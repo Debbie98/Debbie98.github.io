@@ -54,13 +54,14 @@
 
         <script>
 
-            var latlng;
-            var map;
-            var markerPosition;
-            var osm;
-            var equestrian;
-
             window.onload = function () {
+                var latlng;
+                var map;
+                var markerPosition;
+                var osm;
+                var equestrian;
+
+                var myIcon = L.divIcon({ className: 'my-div-icon' });
 
                 //Get own position
 
@@ -72,12 +73,13 @@
 
                     osm = new L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
                         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://mapbox.com">Mapbox</a>',
+                        minZoom: 10,
                         maxZoom: 18,
                         id: 'mapbox.streets',
                         accessToken: 'pk.eyJ1IjoiYmJyb29rMTU0IiwiYSI6ImNpcXN3dnJrdDAwMGNmd250bjhvZXpnbWsifQ.Nf9Zkfchos577IanoKMoYQ'
                     }).addTo(map);
 
-                    markerPosition = L.marker(latlng).addTo(map);
+                    markerPosition = L.marker(latlng, { icon: myIcon }).addTo(map);
                 });
 
 
@@ -96,7 +98,7 @@
                     map.addLayer(osm);
                 }
 
-                
+
 
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', 'equestrian.geojson');
