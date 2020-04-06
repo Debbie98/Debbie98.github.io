@@ -98,16 +98,21 @@
                     map.addLayer(osm);
                 }*/
 
+                <button onclick="saarland">Saarland</button>
 
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', 'equestrian.geojson');
-                xhr.setRequestHeader('Content-Type', 'application/json');
-                xhr.onload = function () {
-                    if (xhr.status === 200) {
-                        L.geoJSON(JSON.parse(xhr.responseText), {onEachFeature: onEachFeature}).addTo(map);
-                    }
-                };
-                xhr.send();
+
+                function saarland() {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('GET', 'equestrian.geojson');
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.onload = function () {
+                        if (xhr.status === 200) {
+                            L.geoJSON(JSON.parse(xhr.responseText), { onEachFeature: onEachFeature }).addTo(map);
+                        }
+                    };
+                    xhr.send();
+                }
+
 
 
                 function onEachFeature(feature, layer) {
@@ -120,7 +125,7 @@
                     }
                 }
 
-                
+
             }
 
         </script>
