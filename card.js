@@ -1,5 +1,8 @@
 var map;
 window.addEventListener("DOMContentLoaded", function () {
+
+    document.getElementById("saarland").addEventListener("click", onClickSaarland);
+
     map = L.map('map');
     var latlng;
     var osm;
@@ -29,7 +32,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 });
 
-document.getElementById("saarland").addEventListener("click", onClickSaarland);
+
 
 function onClickSaarland() {
 
