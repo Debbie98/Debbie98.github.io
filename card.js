@@ -45,34 +45,28 @@ window.addEventListener("DOMContentLoaded", function () {
 
 
 
-    function saarland() {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'equestrian.geojson');
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                L.geoJSON(JSON.parse(xhr.responseText), { onEachFeature: onEachFeature }).addTo(map);
-            }
-        };
-        xhr.send();
-    }
-
-
-
-    function onEachFeature(feature, layer) {
-        // does this feature have a property named popupContent?
-        if (feature.properties.name != null) {
-            layer.bindPopup(feature.properties.name);
-        }
-        else {
-            layer.bindPopup("Sorry, no name found");
-        }
-    }
-
-
-
-
 });
 
+function saarland() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'equestrian.geojson');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            L.geoJSON(JSON.parse(xhr.responseText), { onEachFeature: onEachFeature }).addTo(map);
+        }
+    };
+    xhr.send();
+}
 
 
+
+function onEachFeature(feature, layer) {
+    // does this feature have a property named popupContent?
+    if (feature.properties.name != null) {
+        layer.bindPopup(feature.properties.name);
+    }
+    else {
+        layer.bindPopup("Sorry, no name found");
+    }
+}
