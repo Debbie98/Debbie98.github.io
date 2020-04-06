@@ -1,7 +1,6 @@
 window.addEventListener("DOMContentLoaded", function () {
-
-    var latlng;
     var map = L.map('map');
+    var latlng;
     var osm;
     var equestrian;
 
