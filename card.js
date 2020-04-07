@@ -1,10 +1,7 @@
 var map;
 window.addEventListener("DOMContentLoaded", function () {
 
-    document.getElementById("saarland").addEventListener("click", onClickSaarland);
-
     map = L.map('map');
-    var latlng;
     var osm;
     var equestrian;
 
@@ -21,32 +18,35 @@ window.addEventListener("DOMContentLoaded", function () {
     //Get own position
 
     navigator.geolocation.getCurrentPosition(function (location) {
-        latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
+        var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
+
+        var latitude = location.coords.latitude.toString();
+        var longitude = location.coords.longitude.toString();
+        var latitude2 = (location.coords.latitude + 0.001).toString();
+        var longitude2 = (location.coords.longitude + 0.001).toString();
 
         map.setView(latlng, 10);
 
         var myPositionIcon = L.divIcon({ className: 'my-div-icon' });
 
         var markerPosition = L.marker(latlng, { icon: myPositionIcon }).addTo(map);
+        getRidingStables(latitude, longitude, latitude2, longitude2);
     });
 
 });
 
+function getRidingStables(latitude, longitude, latitude2, longitude2) {
+    var query = '?data=[out:json];node(' + latitude + ', ' + longitude + ', ' + latitude2 + ', ' + longitude2 + ');node(around:20000)[sport=equestrian];out;';
+    var url = 'https://overpass-api.de/api/interpreter' + query;
 
 
-function onClickSaarland() {
-
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'equestrian.geojson');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            L.geoJSON(JSON.parse(xhr.responseText), { onEachFeature: onEachFeature }).addTo(map);
-        }
-    };
-    xhr.send();
+    fetch(url)
+        .then(response => response.json())
+        .then(json => {
+            var geojson = osmtogeojson(json);
+            L.geoJSON(geojson, { onEachFeature: onEachFeature }).addTo(map);
+        });
 }
-
 
 
 function onEachFeature(feature, layer) {
