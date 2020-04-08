@@ -14,6 +14,7 @@ window.addEventListener("DOMContentLoaded", function () {
         accessToken: 'pk.eyJ1IjoiYmJyb29rMTU0IiwiYSI6ImNpcXN3dnJrdDAwMGNmd250bjhvZXpnbWsifQ.Nf9Zkfchos577IanoKMoYQ'
     }).addTo(map);
 
+    map.setView([48.796199, 8.306520], 9);
 
     //Get own position
 
