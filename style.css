@@ -88,8 +88,8 @@ h2 {
 }
 
 .witz {
-    border-color: red;
-    border-style: dotted;
+    border-color: rgb(49, 212, 62);
+    border-style: solid;
     border-radius: 0.2rem;
     font-size: larger;
 }
