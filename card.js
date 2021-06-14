@@ -3,7 +3,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
     map = L.map('map');
     var osm;
-    var equestrian;
 
 
     osm = new L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {

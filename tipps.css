@@ -80,11 +80,12 @@ h2 {
 .accordion-heading {
     cursor: pointer;
 }
+/* shows the mouse pointer as a hand */
 
 .accordion-heading:after {
     content: '\25B6'; 
   }
-
+/* arrow after the question pointing to the right */
 
 .accordion-content-3 {
     display: none;
@@ -107,6 +108,7 @@ h2 {
 .accordion-element.accordion-element-active .accordion-heading:after {
     content: "\25BC"; 
 }
+/* arrow pointing down now */
 
 @media (max-width: 50rem) {
     .accordion-content-3 {

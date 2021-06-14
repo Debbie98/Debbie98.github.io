@@ -93,6 +93,7 @@ h2 {
     font-size: larger;
 }
 
+/*tablet size, different/shorter text*/
 @media (max-width: 50rem) {
     
     .content-inner {
@@ -112,6 +113,7 @@ h2 {
     }
 }
 
+/*cellphone size, fontsize only medium*/
 @media (max-width: 40rem) {
     #content-outer {
         display: block;
