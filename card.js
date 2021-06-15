@@ -56,6 +56,6 @@ function onEachFeature(feature, layer) {
         layer.bindPopup(feature.properties.name);
     }
     else {
-        layer.bindPopup("Sorry, no name found");
+        layer.bindPopup("Entschuldigung, es wurde kein Name hinterlegt");
     }
 }
